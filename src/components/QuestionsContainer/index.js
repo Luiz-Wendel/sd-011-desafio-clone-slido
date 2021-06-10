@@ -6,7 +6,7 @@ import style from './style.module.css';
 
 export default class QuestionsContainer extends React.Component {
   render() {
-    const { questions, addQuestion } = this.props;
+    const { questions, addQuestion, addLike } = this.props;
 
     return (
       <section className={ style.questionsComponent }>
@@ -19,7 +19,7 @@ export default class QuestionsContainer extends React.Component {
               ? <span>No questions yet!</span>
               : questions
                 .map((question, index) => (
-                  <Question key={ index } question={ question } />
+                  <Question key={ index } question={ question } addLike={ addLike } />
                 ))
           }
         </section>
@@ -31,4 +31,5 @@ export default class QuestionsContainer extends React.Component {
 QuestionsContainer.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
   addQuestion: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
 };

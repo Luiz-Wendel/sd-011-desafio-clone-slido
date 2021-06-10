@@ -3,10 +3,33 @@
   border-radius: 0.5em;
   margin-bottom: 0.5em;
   padding: 1em;
+  position: relative;
   width: 50vw;
 }
 
 .question p:first-of-type {
   font-weight: 600;
   padding-bottom: 0.5em;
+}
+
+.question button {
+  background-color: var(--color-dark-gray);
+  border: 2px solid var(--color-primary-text);
+  border-radius: 2em;
+  color: var(--color-primary-text);
+  padding: 0.5em 1em;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.question button:hover {
+  background-color: var(--color-gray);
+  border: 2px solid black;
+  color: black;
+  cursor: pointer;
+}
+
+.question button svg {
+  margin-left: 0.5em;
 }

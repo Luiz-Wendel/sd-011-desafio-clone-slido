@@ -11,12 +11,29 @@ class App extends React.Component {
     };
 
     this.addQuestion = this.addQuestion.bind(this);
+    this.addLike = this.addLike.bind(this);
   }
 
   addQuestion(newQuestion) {
     this.setState(({ questions }) => ({
-      questions: [...questions, newQuestion],
+      questions: [...questions, { ...newQuestion, likes: 0 }],
     }));
+  }
+
+  addLike({ questionText, username }) {
+    const { questions } = this.state;
+
+    const updatedQuestions = questions
+      .map((question) => {
+        if (questionText === question.questionText && username === question.username) {
+          question.likes += 1;
+        }
+        return question;
+      });
+
+    this.setState({
+      questions: updatedQuestions,
+    });
   }
 
   render() {
@@ -25,7 +42,11 @@ class App extends React.Component {
     return (
       <main className="main">
         <h1>Sli.do Clone Challenge</h1>
-        <QuestionsContainer questions={ questions } addQuestion={ this.addQuestion } />
+        <QuestionsContainer
+          questions={ questions }
+          addQuestion={ this.addQuestion }
+          addLike={ this.addLike }
+        />
       </main>
     );
   }
