@@ -1,0 +1,12 @@
+.question {
+  background-color: var(--color-dark-gray);
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  width: 50vw;
+}
+
+.question p:first-of-type {
+  font-weight: 600;
+  padding-bottom: 0.5em;
+}
