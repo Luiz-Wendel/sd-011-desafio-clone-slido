@@ -1,0 +1,36 @@
+.form {
+  background-color: var(--color-dark-gray);
+  border-radius: 0.5em;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form input, .form textarea {
+  background-color: var(--color-gray);
+  border: none;
+  border-radius: 0.25em;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.form input:focus, .form textarea:focus {
+  outline: none;
+}
+
+.form button {
+  background-color: var(--color-success);
+  border: none;
+  border-radius: 0.25em;
+  color: white;
+  font-weight: 600;
+  padding: 0.5em;
+}

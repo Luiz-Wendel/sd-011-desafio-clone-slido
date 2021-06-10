@@ -1,0 +1,9 @@
+.questionsComponent {
+  width: 50vw;
+}
+
+.questionsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
