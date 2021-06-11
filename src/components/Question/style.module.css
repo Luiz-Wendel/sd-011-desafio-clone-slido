@@ -7,9 +7,16 @@
   width: 50vw;
 }
 
+.question p {
+  overflow-wrap: break-word;
+}
+
+.question p + p {
+  margin-top: 1.5em;
+}
+
 .question p:first-of-type {
   font-weight: 600;
-  padding-bottom: 0.5em;
 }
 
 .question button {
@@ -17,9 +24,15 @@
   border: 2px solid var(--color-primary-text);
   border-radius: 2em;
   color: var(--color-primary-text);
+  height: 35px;
   padding: 0.5em 1em;
   position: absolute;
   right: 1em;
+  top: 1em;
+}
+
+.question button + button {
+  right: 7em;
   top: 1em;
 }
 

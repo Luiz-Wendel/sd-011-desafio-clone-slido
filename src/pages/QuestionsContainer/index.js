@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import QuestionForm from '../QuestionForm';
-import Question from '../Question';
+import QuestionForm from '../../components/QuestionForm';
+import Question from '../../components/Question';
 import style from './style.module.css';
 
 export default class QuestionsContainer extends React.Component {
@@ -27,7 +27,7 @@ export default class QuestionsContainer extends React.Component {
   }
 
   render() {
-    const { questions, addQuestion, addLike } = this.props;
+    const { questions, addQuestion, addLike, checkAsAnswered, location } = this.props;
     const { filter } = this.state;
 
     return (
@@ -54,7 +54,13 @@ export default class QuestionsContainer extends React.Component {
               ? <span>No questions yet!</span>
               : questions
                 .map((question, index) => (
-                  <Question key={ index } question={ question } addLike={ addLike } />
+                  <Question
+                    key={ index }
+                    question={ question }
+                    addLike={ addLike }
+                    checkAsAnswered={ checkAsAnswered }
+                    location={ location }
+                  />
                 ))
           }
         </section>
@@ -68,4 +74,6 @@ QuestionsContainer.propTypes = {
   addQuestion: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   handleFilter: PropTypes.func.isRequired,
+  checkAsAnswered: PropTypes.func.isRequired,
+  location: PropTypes.objectOf(PropTypes.string).isRequired,
 };

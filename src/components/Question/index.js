@@ -6,7 +6,13 @@ import style from './style.module.css';
 
 export default class Question extends React.Component {
   render() {
-    const { question, addLike } = this.props;
+    const { question, addLike, checkAsAnswered, location: { pathname } } = this.props;
+
+    const checkAnsweredButton = (
+      <button type="button" onClick={ () => checkAsAnswered(question) }>
+        Answered
+      </button>
+    );
 
     return (
       <section className={ style.question }>
@@ -18,10 +24,19 @@ export default class Question extends React.Component {
             <FontAwesomeIcon icon={ faThumbsUp } size="lg" />
           </span>
         </button>
+        {
+          pathname !== '/answered'
+            ? checkAnsweredButton
+            : null
+        }
       </section>
     );
   }
 }
+
+Question.defaultProps = {
+  checkAsAnswered: () => {},
+};
 
 Question.propTypes = {
   question: PropTypes.shape({
@@ -30,4 +45,6 @@ Question.propTypes = {
     likes: PropTypes.number,
   }).isRequired,
   addLike: PropTypes.func.isRequired,
+  checkAsAnswered: PropTypes.func,
+  location: PropTypes.objectOf(PropTypes.string).isRequired,
 };

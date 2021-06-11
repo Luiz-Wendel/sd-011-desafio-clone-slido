@@ -1,0 +1,7 @@
+.questionsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1em;
+  width: 50vw;
+}
