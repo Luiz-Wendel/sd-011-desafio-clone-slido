@@ -30,24 +30,32 @@ export default class QuestionsContainer extends React.Component {
     const { questions, addQuestion, addLike, checkAsAnswered, location } = this.props;
     const { filter } = this.state;
 
+    const filterElement = (
+      <div className={ style.filters }>
+        <select value={ filter } onChange={ this.handleFilter }>
+          <option value="oldest">
+            Oldest
+          </option>
+          <option value="newest">
+            Newest
+          </option>
+          <option value="likes">
+            Most Likes
+          </option>
+        </select>
+      </div>
+    );
+
     return (
       <section className={ style.questionsComponent }>
         <section id="question-form">
           <QuestionForm addQuestion={ addQuestion } />
         </section>
-        <div className={ style.filters }>
-          <select value={ filter } onChange={ this.handleFilter }>
-            <option value="oldest">
-              Oldest
-            </option>
-            <option value="newest">
-              Newest
-            </option>
-            <option value="likes">
-              Most Likes
-            </option>
-          </select>
-        </div>
+        {
+          questions.length > 1
+            ? filterElement
+            : null
+        }
         <section className={ style.questionsContainer }>
           {
             questions.length < 1
