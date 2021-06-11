@@ -1,5 +1,22 @@
 .questionsComponent {
+  display: flex;
+  flex-direction: column;
   width: 50vw;
+}
+
+.filters {
+  align-self: flex-end;
+  margin-bottom: 0.5em;
+}
+
+.filters select {
+  background-color: var(--color-gray);
+  border-radius: 0.5em;
+  padding: 0.25em;
+}
+
+.filters select:focus {
+  outline: none;
 }
 
 .questionsContainer {

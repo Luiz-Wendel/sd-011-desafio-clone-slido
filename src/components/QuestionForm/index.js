@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import style from './style.module.css';
 
+const initialState = {
+  questionText: '',
+  username: '',
+};
+
 export default class QuestionForm extends Component {
   constructor() {
     super();
 
-    this.state = {
-      questionText: '',
-      username: '',
-    };
+    this.state = { ...initialState };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange({ target }) {
@@ -22,8 +25,15 @@ export default class QuestionForm extends Component {
     });
   }
 
-  render() {
+  handleSubmit() {
     const { addQuestion } = this.props;
+
+    addQuestion({ ...this.state, timestamp: Date.now() });
+
+    this.setState({ ...initialState });
+  }
+
+  render() {
     const { questionText, username } = this.state;
 
     return (
@@ -48,7 +58,7 @@ export default class QuestionForm extends Component {
             maxLength={ 50 }
           />
         </label>
-        <button type="button" onClick={ () => addQuestion(this.state) }>Submit</button>
+        <button type="button" onClick={ this.handleSubmit }>Submit</button>
       </form>
     );
   }
