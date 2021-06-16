@@ -1,0 +1,60 @@
+.question {
+  background-color: var(--color-dark-gray);
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  position: relative;
+  width: 50vw;
+}
+
+.question p {
+  overflow-wrap: break-word;
+}
+
+.question p + p {
+  margin-top: 1.5em;
+}
+
+.question p:first-of-type {
+  font-weight: 600;
+}
+
+.question button {
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary-text);
+  border-radius: 2em;
+  color: var(--color-primary-text);
+  font-weight: 600;
+  height: 35px;
+  padding: 0.5em 1em;
+  position: absolute;
+}
+
+.question button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.likeBtn {
+  right: 1em;
+  top: 1em;
+}
+
+.likeBtn:hover {
+  border: 2px solid darkblue;
+  color: darkblue;
+}
+
+.answeredBtn {
+  right: 7em;
+  top: 1em;
+}
+
+.answeredBtn:hover {
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
+}
+
+.question button svg {
+  margin-left: 0.5em;
+}
