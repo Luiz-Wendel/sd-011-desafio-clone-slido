@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import QuestionsContainer from './pages/QuestionsContainer';
+import Home from './pages/Home';
 import Answered from './pages/Answered';
 import PageNotFound from './pages/PageNotFound';
 import './App.css';
@@ -132,7 +132,7 @@ class App extends React.Component {
               exact
               path="/"
               render={ (props) => (
-                <QuestionsContainer
+                <Home
                   { ...props }
                   questions={ filteredQuestions }
                   addQuestion={ this.addQuestion }

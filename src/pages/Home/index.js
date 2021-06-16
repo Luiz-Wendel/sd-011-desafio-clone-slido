@@ -4,7 +4,7 @@ import QuestionForm from '../../components/QuestionForm';
 import Question from '../../components/Question';
 import style from './style.module.css';
 
-export default class QuestionsContainer extends React.Component {
+export default class Home extends React.Component {
   constructor() {
     super();
 
@@ -77,7 +77,7 @@ export default class QuestionsContainer extends React.Component {
   }
 }
 
-QuestionsContainer.propTypes = {
+Home.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object),
   addQuestion: PropTypes.func,
   addLike: PropTypes.func,
