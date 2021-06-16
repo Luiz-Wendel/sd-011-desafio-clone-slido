@@ -26,11 +26,40 @@ export default class QuestionForm extends Component {
   }
 
   handleSubmit() {
-    const { addQuestion } = this.props;
+    const hasEmptyField = this.hasEmptyField();
 
-    addQuestion({ ...this.state, timestamp: Date.now() });
+    if (!hasEmptyField) {
+      const { addQuestion } = this.props;
 
-    this.setState({ ...initialState });
+      addQuestion({ ...this.state, timestamp: Date.now() });
+
+      this.setState({ ...initialState });
+    }
+
+    this.handleEmptyField();
+  }
+
+  handleEmptyField() {
+    const entries = Object.entries(this.state);
+
+    entries.map(([key, value]) => {
+      const emptyElement = document.getElementById(key);
+      if (value === '') {
+        emptyElement.classList.add(style.empty);
+        emptyElement.placeholder = '*This field is required';
+      } else {
+        emptyElement.classList.remove(style.empty);
+        emptyElement.placeholder = '';
+      }
+
+      return undefined;
+    });
+  }
+
+  hasEmptyField() {
+    const values = Object.values(this.state);
+
+    return values.some((value) => value === '');
   }
 
   render() {
@@ -41,6 +70,7 @@ export default class QuestionForm extends Component {
         <label htmlFor="questionText">
           Question:
           <textarea
+            className={ style.inputField }
             id="questionText"
             name="questionText"
             value={ questionText }
@@ -51,6 +81,7 @@ export default class QuestionForm extends Component {
         <label htmlFor="username">
           Your name:
           <input
+            className={ style.inputField }
             id="username"
             name="username"
             value={ username }

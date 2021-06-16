@@ -15,7 +15,7 @@
 }
 
 
-.form input, .form textarea {
+.inputField {
   background-color: var(--color-gray);
   border: none;
   border-radius: 0.25em;
@@ -23,8 +23,15 @@
   padding: 1em;
 }
 
-.form input:focus, .form textarea:focus {
+.inputField:focus {
   outline: none;
+}
+
+.inputField::placeholder {
+  color: red;
+  font-family: var(--font-family);
+  letter-spacing: 0.1em;
+  opacity: 0.6;
 }
 
 .form button {
@@ -35,4 +42,8 @@
   cursor: pointer;
   font-weight: 600;
   padding: 0.5em;
+}
+
+.empty {
+  border: 2px solid red;
 }
