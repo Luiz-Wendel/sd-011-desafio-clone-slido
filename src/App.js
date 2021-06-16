@@ -10,10 +10,12 @@ class App extends React.Component {
     super();
 
     this.state = {
+      questionsFilter: 'oldest',
+      answeredQuestionsfilter: 'oldest',
       questions: [],
-      filter: 'oldest',
-      filteredQuestions: [],
       answeredQuestions: [],
+      filteredQuestions: [],
+      filteredAnsweredQuestions: [],
     };
 
     this.addQuestion = this.addQuestion.bind(this);
@@ -22,15 +24,22 @@ class App extends React.Component {
     this.checkAsAnswered = this.checkAsAnswered.bind(this);
   }
 
-  handleFilter(filter) {
+  handleFilter(key, filter) {
     this.setState({
-      filter,
-    }, () => this.filterQuestions());
+      [key]: filter,
+    }, () => this.filterQuestions(key));
   }
 
-  filterQuestions() {
-    const { questions, filter } = this.state;
-    let filteredQuestions = questions.slice();
+  filterQuestions(key) {
+    const {
+      questions, answeredQuestions, questionsFilter, answeredQuestionsfilter,
+    } = this.state;
+    const isQuestions = key === 'questionsFilter';
+    const stateKey = isQuestions ? 'filteredQuestions' : 'filteredAnsweredQuestions';
+    const filter = isQuestions ? questionsFilter : answeredQuestionsfilter;
+    let filteredQuestions = isQuestions
+      ? questions.slice()
+      : answeredQuestions.slice();
 
     if (filter === 'newest') filteredQuestions.reverse();
 
@@ -42,23 +51,25 @@ class App extends React.Component {
     }
 
     this.setState({
-      filteredQuestions,
+      [stateKey]: filteredQuestions,
     });
   }
 
   addQuestion(newQuestion) {
     this.setState(({ questions }) => ({
       questions: [...questions, { ...newQuestion, likes: 0 }],
-    }), () => this.filterQuestions());
+    }), () => this.filterQuestions('questionsFilter'));
   }
 
   addLike({ questionText, username }) {
     const { questions, answeredQuestions } = this.state;
+    let key;
 
     const updatedQuestions = questions
       .map((question) => {
         if (questionText === question.questionText && username === question.username) {
           question.likes += 1;
+          key = 'questionsFilter';
         }
         return question;
       });
@@ -70,6 +81,7 @@ class App extends React.Component {
           && username === answeredQuestion.username
         ) {
           answeredQuestion.likes += 1;
+          key = 'answeredQuestionsfilter';
         }
         return answeredQuestion;
       });
@@ -77,7 +89,7 @@ class App extends React.Component {
     this.setState({
       questions: updatedQuestions,
       answeredQuestions: updatedAnsweredQuestions,
-    }, () => this.filterQuestions());
+    }, () => this.filterQuestions(key));
   }
 
   checkAsAnswered({ questionText, timestamp }) {
@@ -98,11 +110,14 @@ class App extends React.Component {
     this.setState((previousState) => ({
       questions: notAnsweredQuestions,
       answeredQuestions: [...previousState.answeredQuestions, answeredQuestion],
-    }), () => this.filterQuestions());
+    }), () => {
+      this.filterQuestions('questionsFilter');
+      this.filterQuestions('answeredQuestionsfilter');
+    });
   }
 
   render() {
-    const { filteredQuestions, answeredQuestions } = this.state;
+    const { filteredQuestions, filteredAnsweredQuestions } = this.state;
 
     return (
       <main className="main">
@@ -130,9 +145,10 @@ class App extends React.Component {
               path="/answered"
               render={ (props) => (
                 <Answered
-                  questions={ answeredQuestions }
-                  addLike={ this.addLike }
                   { ...props }
+                  questions={ filteredAnsweredQuestions }
+                  addLike={ this.addLike }
+                  handleFilter={ this.handleFilter }
                 />
               ) }
             />

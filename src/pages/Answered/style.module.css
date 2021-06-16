@@ -1,3 +1,35 @@
+.answeredContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.answeredContainer h1 {
+  align-self: center;
+  margin-top: 1em;
+}
+
+.filters {
+  align-self: flex-end;
+  margin-bottom: 0.5em;
+}
+
+.filters select {
+  background-color: var(--color-secondary-text);
+  border-radius: 1em;
+  color: var(--color-primary-text);
+  font-weight: 600;
+  padding: 0.25em;
+}
+
+.filters select:hover {
+  cursor: pointer;
+}
+
+.filters select:focus {
+  outline: none;
+}
+
 .questionsContainer {
   display: flex;
   flex-wrap: wrap;

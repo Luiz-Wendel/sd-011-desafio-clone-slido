@@ -23,7 +23,7 @@ export default class QuestionsContainer extends React.Component {
       filter: value,
     });
 
-    handleFilter(value);
+    handleFilter('questionsFilter', value);
   }
 
   render() {
@@ -78,10 +78,10 @@ export default class QuestionsContainer extends React.Component {
 }
 
 QuestionsContainer.propTypes = {
-  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  addQuestion: PropTypes.func.isRequired,
-  addLike: PropTypes.func.isRequired,
-  handleFilter: PropTypes.func.isRequired,
-  checkAsAnswered: PropTypes.func.isRequired,
-  location: PropTypes.objectOf(PropTypes.string).isRequired,
-};
+  questions: PropTypes.arrayOf(PropTypes.object),
+  addQuestion: PropTypes.func,
+  addLike: PropTypes.func,
+  handleFilter: PropTypes.func,
+  checkAsAnswered: PropTypes.func,
+  location: PropTypes.objectOf(PropTypes.string),
+}.isRequired;
