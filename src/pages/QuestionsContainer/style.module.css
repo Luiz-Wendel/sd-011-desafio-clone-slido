@@ -10,9 +10,15 @@
 }
 
 .filters select {
-  background-color: var(--color-gray);
-  border-radius: 0.5em;
+  background-color: var(--color-secondary-text);
+  border-radius: 1em;
+  color: var(--color-primary-text);
+  font-weight: 600;
   padding: 0.25em;
+}
+
+.filters select:hover {
+  cursor: pointer;
 }
 
 .filters select:focus {

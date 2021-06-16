@@ -9,7 +9,7 @@
 }
 
 nav a {
-  color: var(--color-primary-text);
+  color: var(--color-secondary-text);
 }
 
 nav > a + a {
@@ -17,5 +17,5 @@ nav > a + a {
 }
 
 nav a:hover {
-  color: darkred;
+  color: var(--color-primary-text);
 }

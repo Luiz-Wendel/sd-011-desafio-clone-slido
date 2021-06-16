@@ -9,7 +9,11 @@ export default class Question extends React.Component {
     const { question, addLike, checkAsAnswered, location: { pathname } } = this.props;
 
     const checkAnsweredButton = (
-      <button type="button" onClick={ () => checkAsAnswered(question) }>
+      <button
+        className={ style.answeredBtn }
+        type="button"
+        onClick={ () => checkAsAnswered(question) }
+      >
         Answered
       </button>
     );
@@ -18,7 +22,11 @@ export default class Question extends React.Component {
       <section className={ style.question }>
         <p>{ question.username }</p>
         <p>{ question.questionText }</p>
-        <button type="button" onClick={ () => addLike(question) }>
+        <button
+          className={ style.likeBtn }
+          type="button"
+          onClick={ () => addLike(question) }
+        >
           <span>
             { question.likes }
             <FontAwesomeIcon icon={ faThumbsUp } size="lg" />

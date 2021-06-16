@@ -1,6 +1,7 @@
 :root {
   --color-primary: black;
-  --color-primary-text: white;
+  --color-primary-text: darkred;
+  --color-secondary-text: white;
   --color-success: #376e37;
   --color-dark-gray: #292929;
   --color-gray: #c9c9c9;

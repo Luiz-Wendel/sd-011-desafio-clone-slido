@@ -20,27 +20,39 @@
 }
 
 .question button {
-  background-color: var(--color-dark-gray);
+  background-color: var(--color-primary);
   border: 2px solid var(--color-primary-text);
   border-radius: 2em;
   color: var(--color-primary-text);
+  font-weight: 600;
   height: 35px;
   padding: 0.5em 1em;
   position: absolute;
+}
+
+.question button:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.likeBtn {
   right: 1em;
   top: 1em;
 }
 
-.question button + button {
+.likeBtn:hover {
+  border: 2px solid darkblue;
+  color: darkblue;
+}
+
+.answeredBtn {
   right: 7em;
   top: 1em;
 }
 
-.question button:hover {
-  background-color: var(--color-gray);
-  border: 2px solid black;
-  color: black;
-  cursor: pointer;
+.answeredBtn:hover {
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
 }
 
 .question button svg {
